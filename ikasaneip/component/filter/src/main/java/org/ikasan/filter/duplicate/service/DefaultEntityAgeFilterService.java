@@ -44,7 +44,7 @@ public class DefaultEntityAgeFilterService implements EntityAgeFilterService
 
         if(cachedEntry == null)
         {
-            this.filteredMessageDao.save(entry);
+            this.filteredMessageDao.saveOrUpdate(entry);
             filterEntryMap.put(entry.getCriteria() + entry.getClientId(), (DefaultFilterEntry)entry);
 
             return false;

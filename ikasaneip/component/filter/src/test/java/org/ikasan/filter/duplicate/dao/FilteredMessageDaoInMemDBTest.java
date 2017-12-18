@@ -220,6 +220,7 @@ public class FilteredMessageDaoInMemDBTest
         found = this.duplicateFilterDao.findMessage(three);
         Assert.assertNotNull(found);
     }
+
     /**
      * Test case: try to save an already existing filter entry
      */
@@ -234,5 +235,27 @@ public class FilteredMessageDaoInMemDBTest
 
         //Now try to save it again
         this.duplicateFilterDao.save(newEntry);
+    }
+
+    /**
+     * Test case: try to save an already existing filter entry
+     */
+    @Test
+    @DirtiesContext
+    public void save_or_update_duplicate_must_pass()
+    {
+        //Save the entry
+        int timeToLive = 1;
+        FilterEntry newEntry = new DefaultFilterEntry("save_duplicate_test".hashCode(), "test", timeToLive);
+        this.duplicateFilterDao.saveOrUpdate(newEntry);
+
+        newEntry = new DefaultFilterEntry("save_duplicate_test".hashCode(), "test", timeToLive);
+        //Now try to save it again
+        this.duplicateFilterDao.saveOrUpdate(newEntry);
+
+        FilterEntry entry = this.duplicateFilterDao.findMessage(newEntry);
+
+        Assert.assertEquals("Client id equals!", entry.getClientId(), newEntry.getClientId());
+        Assert.assertEquals("Criteria equals!", entry.getCriteria(), newEntry.getCriteria());
     }
 }
