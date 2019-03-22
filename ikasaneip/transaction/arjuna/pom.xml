@@ -88,16 +88,10 @@
     <dependencies>
 
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-jta-narayana</artifactId>
-            <version>${version.org.springboot}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-logging</artifactId>
-                </exclusion>
-            </exclusions>
+            <groupId>me.snowdrop</groupId>
+            <artifactId>narayana-spring-boot-core</artifactId>
         </dependency>
+
 
         <dependency>
             <groupId>javax.transaction</groupId>

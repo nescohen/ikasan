@@ -361,13 +361,13 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <version.kryo>4.0.2</version.kryo>
-        <version.org.hibernate>5.2.17.Final</version.org.hibernate>
-        <version.org.hibernate-validator>6.0.13.Final</version.org.hibernate-validator>
-        <version.org.springframework>5.0.12.RELEASE</version.org.springframework>
-        <version.org.springframework.security>5.0.11.RELEASE</version.org.springframework.security>
+        <version.org.hibernate>5.3.7.Final</version.org.hibernate>
+        <version.org.hibernate-validator>6.0.15.Final</version.org.hibernate-validator>
+        <version.org.springframework>5.1.5.RELEASE</version.org.springframework>
+        <version.org.springframework.security>5.1.4.RELEASE</version.org.springframework.security>
         <version.org.springframework.ldap>2.3.2.RELEASE</version.org.springframework.ldap>
         <version.org.springframework.webflow>2.4.0.RELEASE</version.org.springframework.webflow>
-        <version.org.springboot>2.0.7.RELEASE</version.org.springboot>
+        <version.org.springboot>2.1.2.RELEASE</version.org.springboot>
         <version.io.spingfox.swagger>2.9.2</version.io.spingfox.swagger>
         <version.com.fasterxml.classmate>1.4.0</version.com.fasterxml.classmate>
         <version.net.bytebuddy.byte-buddy>1.8.12</version.net.bytebuddy.byte-buddy>
@@ -416,7 +416,8 @@
         <version.geronimo.spec>1.4-rc3</version.geronimo.spec>
         <version.geronimo.jms.spec>1.1.1</version.geronimo.jms.spec>
         <version.javax.jms-api>2.0.1</version.javax.jms-api>
-        <version.org.jboss.narayana.jta>5.8.2.Final</version.org.jboss.narayana.jta>
+        <version.me.snowdrop.narayana>2.1.0</version.me.snowdrop.narayana>
+        <version.org.jboss.narayana.jta>5.9.1.Final</version.org.jboss.narayana.jta>
         <version.commons.net>3.3</version.commons.net>
         <version.com.thoughtworks.xstream>1.4.10</version.com.thoughtworks.xstream>
         <version.xalan.xalan>2.7.2</version.xalan.xalan>
@@ -426,6 +427,7 @@
         <version.com.jcraft.jsch>0.1.55</version.com.jcraft.jsch>
         <version.org.mockftpserver>2.6</version.org.mockftpserver>
         <version.org.apache.sshd>2.1.0</version.org.apache.sshd>
+		<version.javax.annotation>1.2</version.javax.annotation>
 		<version.org.glassfish.jersey>2.21</version.org.glassfish.jersey>
 		<version.org.glassfish.json>1.0</version.org.glassfish.json>
         <version.org.glassfish.main.external.jmxremote_optional-repackaged>4.0-b72</version.org.glassfish.main.external.jmxremote_optional-repackaged>
@@ -1536,9 +1538,16 @@
             </dependency>
 
             <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-jta-narayana</artifactId>
-                <version>${version.org.springboot}</version>
+                <groupId>me.snowdrop</groupId>
+                <artifactId>narayana-spring-boot-core</artifactId>
+                <version>${version.me.snowdrop.narayana}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.jboss.spec.javax.transaction</groupId>
+                        <artifactId>jboss-transaction-api_1.2_spec</artifactId>
+                    </exclusion>
+
+                </exclusions>
             </dependency>
 
             <dependency>
@@ -1830,6 +1839,12 @@
                         <artifactId>jackson-annotations</artifactId>
                     </exclusion>
                 </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.annotation</groupId>
+                <artifactId>javax.annotation-api</artifactId>
+				<version>${version.javax.annotation}</version>
             </dependency>
 
             <dependency>
@@ -2346,11 +2361,11 @@
             </dependency>
 
             <!-- Jboss -->
-            <dependency>
-                <groupId>org.jboss.transaction</groupId>
-                <artifactId>jboss-jta</artifactId>
-                <version>${version.org.jboss.transaction.jboss-jta}</version>
-            </dependency>
+            <!--<dependency>-->
+                <!--<groupId>org.jboss.transaction</groupId>-->
+                <!--<artifactId>jboss-jta</artifactId>-->
+                <!--<version>${version.org.jboss.transaction.jboss-jta}</version>-->
+            <!--</dependency>-->
 
             <dependency>
                 <groupId>org.jboss.logging</groupId>

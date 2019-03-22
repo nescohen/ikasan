@@ -1,6 +1,5 @@
 package org.ikasan.dashboard.boot;
 
-import org.springframework.boot.jta.narayana.NarayanaProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -51,17 +50,12 @@ import org.springframework.context.annotation.ImportResource;
 } )
 
 @ComponentScan({
-    "org.ikasan.web.*",
+        "org.ikasan.web.*",
         "org.ikasan.rest.*",
         "org.ikasan.dashboard.ui.*",
         "org.ikasan.dashboard.boot.*"
 })
 public class ConfigClass {
-    @Bean("narayanaProperties")
-    public NarayanaProperties getNarayanaProperties(){
-        NarayanaProperties narayanaProperties =  new NarayanaProperties();
-        return narayanaProperties;
-    }
 
 
 }
