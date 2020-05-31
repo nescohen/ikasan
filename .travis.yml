@@ -12,6 +12,6 @@ install:
 ## Build and release to maven central
 script:
 ##  mvn clean deploy --settings .maven.xml -DskipTests=true -B -U -Prelease
-  - if [[ $TRAVIS_BRANCH == "feature/3.1.x-IKASAN-1758-travis-ci-deployment" ]]; then  mvn --file ikasaneip/pom.xml  clean deploy -DskipTests -Dmaven.javadoc.skip=true -Djava.security.egd=file:/dev/./urandom -Pall -B  -V --settings --settings .travis.settings.xml; fi
+  - if [[ $TRAVIS_BRANCH == "feature/3.1.x-IKASAN-1758-travis-ci-deployment" ]]; then  mvn --file ikasaneip/pom.xml  clean deploy -DskipTests -Dmaven.javadoc.skip=true -Djava.security.egd=file:/dev/./urandom -Pall,release-sign-artifacts -B  -V --settings .travis.settings.xml; fi
 
 
